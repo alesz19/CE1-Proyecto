@@ -1,0 +1,19 @@
+%Demodulacion
+ pam_frequency=fftshift(abs(fft(pam)));
+filter=fir1(200,fm/fs,'low');
+original_t_signal=conv(filter,pam);
+original_f_signal=fftshift(abs(fft(original_t_signal)));
+t1=0:1/(length(original_t_signal)-1):1;
+f=-fs/2:fs/(length(original_f_signal)-1):fs/2;
+figure(4)
+ subplot(2,1,1);
+ plot(t1,original_t_signal);
+ title('Dominio del tiempo de la senal Demodulada');
+ xlabel('Tiempo');
+ ylabel('Amplitud');
+ subplot(2,1,2);
+ plot(f,original_f_signal);
+ title('Dominio de la frecuencia');
+ xlabel('Frecuencia');
+ ylabel('Amplitud');
+ 
