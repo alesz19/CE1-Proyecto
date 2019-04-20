@@ -8,8 +8,8 @@ function[fm,fs,st,tt,t]=ModNatural(fc)
  mt=sin(2*pi*fm*t); %un solo tono
  ct=0.5*square(2*pi*fc*t)+0.5; %pulso rectangular de carrier
  st=mt.*ct; %senal modulada es la multiplicacion de ambas
- tt=[ ]; %ssb
- %PAM SSB
+ tt=[ ]; %sb
+ %PAM SB
  for i=1:length(st);
  if st(i)==0;
      tt=[tt,st(i)];
@@ -35,7 +35,7 @@ function[fm,fs,st,tt,t]=ModNatural(fc)
  ylabel('Amplitud');
  subplot(4,1,4);
  plot(t,tt);
- title('PAM de una sola banda lateral');
+ title('PAM de una sola banda');
  xlabel('Tiempo');
  ylabel('amplitude');
  
