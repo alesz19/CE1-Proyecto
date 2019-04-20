@@ -2,13 +2,13 @@ function[fm,fs,st,tt,t]=ModNatural(fc)
  clc;
  clear all;
  close all;
- fm=fc/10;
- fs=100*fc;
- t=0:1/fs:1;
- mt=sin(2*pi*fm*t);
- ct=0.5*square(2*pi*fc*t)+0.5;
- st=mt.*ct;
- tt=[ ];
+ fm=fc/10; %se define la frecuencia del mensaje como 10 veces menor que la del carrier para muestrear correctamente
+ fs=100*fc; %se define fs para propositos de t y fcorte para el filtro en la demodulacion como 100 veces fcarrier.
+ t=0:1/fs:1; 
+ mt=sin(2*pi*fm*t); %un solo tono
+ ct=0.5*square(2*pi*fc*t)+0.5; %pulso rectangular de carrier
+ st=mt.*ct; %senal modulada es la multiplicacion de ambas
+ tt=[ ]; %ssb
  %PAM SSB
  for i=1:length(st);
  if st(i)==0;
@@ -17,7 +17,7 @@ function[fm,fs,st,tt,t]=ModNatural(fc)
      tt=[tt,st(i)+2];
  end
  end
- figure(1)
+ figure(1) %ploteos
  subplot(4,1,1);
  plot(t,mt);
  title('Mensaje');
