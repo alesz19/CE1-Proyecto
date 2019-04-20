@@ -4,6 +4,7 @@ function[fm,fs,st]=ModNatural(fc)
  close all;
  fm=fc/10;
  fs=100*fc;
+ t=0:1/fs:1;
  mt=sin(2*pi*fm*t);
  ct=0.5*square(2*pi*fc*t)+0.5;
  st=mt.*ct;
