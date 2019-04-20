@@ -1,4 +1,4 @@
-function[fm,fs,st]=ModNatural(fc)
+function[fm,fs,st,tt,t]=ModNatural(fc)
  clc;
  clear all;
  close all;
